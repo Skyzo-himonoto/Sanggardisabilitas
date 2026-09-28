@@ -281,7 +281,6 @@ body.text-scale-active textarea {
 .voice-item { padding: 10px 14px; border-radius: 10px; background: var(--card-bg); margin-bottom: 8px; font-size: 13px; border-left: 4px solid var(--primary); display: flex; gap: 10px; align-items: center; }
 .voice-item.danger { border-left-color: var(--danger); }
 .voice-item.warning { border-left-color: var(--warning); }
-
 .sos-overlay {
   position: fixed; inset: 0; z-index: 9999; background: rgba(239, 68, 68, 0.96); backdrop-filter: blur(12px);
   display: none; align-items: center; justify-content: center; flex-direction: column; color: #fff; text-align: center; padding: 30px;
@@ -403,7 +402,7 @@ pre.code-block {
   </div>
 </div>
 
-  <nav class="navbar">
+<nav class="navbar">
   <div style="display:flex;align-items:center;gap:15px;">
     <button class="icon-btn" id="openDrawerBtn" onclick="toggleDrawer()" title="Buka Menu Samping">
       <i class="fas fa-bars-staggered"></i>
@@ -446,7 +445,7 @@ pre.code-block {
     <div class="menu-category">Fitur AI MEMBANTU</div>
     <div class="nav-link" onclick="switchPage('aiassistant', this)">
       <div class="nav-link-left"><i class="fas fa-robot"></i><span>Asisten AI Suara</span></div>
-      <span class="ai-tag">cherly</span>
+      <span class="ai-tag">Cherly</span>
     </div>
     <div class="nav-link" onclick="switchPage('aivision', this)">
       <div class="nav-link-left"><i class="fas fa-camera-retro"></i><span>AI Vision Scanner Objek</span></div>
@@ -495,7 +494,7 @@ pre.code-block {
         </div>
       </div>
 
-      <div class="card" style="margin-bottom:24px;padding:16px 24px;">
+    <div class="card" style="margin-bottom:24px;padding:16px 24px;">
         <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;">
           <div style="display:flex;align-items:center;gap:10px;">
             <i class="fas fa-universal-access" style="font-size:20px;color:var(--primary);"></i>
@@ -613,7 +612,7 @@ pre.code-block {
         <div class="voice-log-box" id="voiceLog">
           <div class="voice-item">
             <i class="fas fa-circle-check" style="color:var(--success);"></i>
-            <div>Modul ESP32 online via BlYNK</div>
+            <div>Modul ESP32 online via Blynk</div>
           </div>
         </div>
       </div>
@@ -634,7 +633,7 @@ pre.code-block {
             <button class="btn btn-secondary btn-ai-compact" onclick="triggerVoiceCommand()"><i class="fas fa-microphone"></i> Bicara</button>
           </div>
 
-   <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:4px;">
+          <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:4px;">
             <span style="font-size:12px;color:var(--text-muted);font-weight:700;">Rekomendasi:</span>
             <button class="btn btn-ai-compact" onclick="useSamplePrompt('Berikan tips berjalan di lorong umum bagi tuna netra')">Tips Lorong</button>
             <button class="btn btn-ai-compact" onclick="useSamplePrompt('Apa yang harus dilakukan jika tongkat pintar mendeteksi bahaya jatuh?')">Protokol Jatuh</button>
@@ -649,7 +648,7 @@ pre.code-block {
     <div class="page" id="page-aivision">
       <div style="display:flex;align-items:center;gap:12px;margin-bottom:6px;">
         <h2 style="font-size:24px;font-weight:800;">📷 AI Vision Object & Danger Scanner</h2>
-        <span class="ai-tag">cherly</span>
+        <span class="ai-tag">Cherly</span>
       </div>
       <p style="font-size:14px;color:var(--text-muted);margin-bottom:20px;">Menggunakan kamera perangkat atau ESP32-CAM untuk memindai area sekitar dan menganalisis halangan menggunakan AI Agent.</p>
 
@@ -697,7 +696,6 @@ pre.code-block {
 #include &lt;BlynkSimpleEsp32.h&gt;
 #include &lt;Wire.h&gt;
 #include &lt;Adafruit_MPU6050.h&gt;
-
 // Pin konfigurasi 
 #define TRIG_PIN 5
 #define ECHO_PIN 18
@@ -842,8 +840,6 @@ let streamInstance = null;
 let fontScale = 1;
 let watchId = null;
 let isFirmwareUnlocked = false;
-
-const FIRMWARE_PASSWORD = "interwamefp90228-Bnlyk";
 
 window.addEventListener('load', () => {
   const savedScale = localStorage.getItem('fontScale');
@@ -991,22 +987,32 @@ function requestFirmwareAccess(el) {
   document.getElementById('firmwarePassword').focus();
 }
 
-function verifyFirmwarePassword() {
+async function verifyFirmwarePassword() {
   const input = document.getElementById('firmwarePassword').value;
-  if (input === FIRMWARE_PASSWORD) {
-    isFirmwareUnlocked = true;
-    document.getElementById('passwordModal').classList.remove('active');
-    showToast("Akses Diterima! Membuka Firmware...", "success");
-    speak("Sandi benar. Membuka halaman firmware.");
-    switchPage('esp32code');
-  } else {
-    showToast("Sandi Salah! Akses Ditolak.", "danger");
+  try {
+    const res = await fetch('/api/firmware', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ password: input })
+    });
+    const data = await res.json();
+    if (data.success) {
+      isFirmwareUnlocked = true;
+      document.getElementById('passwordModal').classList.remove('active');
+      showToast("Akses Diterima! Membuka Firmware...", "success");
+      speak("Sandi benar. Membuka halaman firmware.");
+      switchPage('esp32code');
+    } else {
+      throw new Error();
+    }
+  } catch (err) {
+    showToast("Sandi Salah Akses Ditolak.", "danger");
     speak("Sandi salah. Silakan coba lagi.");
     document.getElementById('firmwarePassword').value = '';
   }
 }
 
-function closePasswordModal() {
+  function closePasswordModal() {
   document.getElementById('passwordModal').classList.remove('active');
 }
 
@@ -1060,43 +1066,37 @@ function useHardwareGPS() {
   }, 5000);
 }
 
-// Token gemini 
 async function askGeminiAI() {
   const q = document.getElementById('aiInput').value.trim();
   const res = document.getElementById('aiResult');
   if (!q) return;
 
   res.style.display = 'block';
-  res.innerHTML = '<i class="fas fa-spinner fa-spin"></i> <em>Menghubungkan ke Gemini AI 3 Flash...</em>';
+  res.innerHTML = '<i class="fas fa-spinner fa-spin"></i> <em>Menghubungkan ke Cherly AI...</em>';
 
   const systemPrompt = "Anda adalah Asisten Pintar Aksesibilitas khusus untuk penyandang disabilitas netra (tunanetra). Berikan jawaban yang sangat jelas, ramah, praktis, mengutamakan keselamatan, dan dalam bahasa Indonesia yang ringkas.";
-  const apiKey = ""; // Masukkan API Key Anda di sini
-  const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-3-flash-preview:generateContent?key=${apiKey}`;
 
   try {
-    const payload = {
-      contents: [{ parts: [{ text: q }] }],
-      systemInstruction: { parts: [{ text: systemPrompt }] }
-    };
-
-    const response = await fetch(apiUrl, {
+    const response = await fetch('/api/gemini', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(payload)
+      body: JSON.stringify({
+        contents: [{ parts: [{ text: q }] }],
+        systemInstruction: { parts: [{ text: systemPrompt }] }
+      })
     });
 
     const result = await response.json();
     const answer = result.candidates?.[0]?.content?.parts?.[0]?.text;
 
     if (answer) {
-      res.innerHTML = `<strong>✨ Jawaban Gemini AI:</strong><br><div style="margin-top:8px;">${answer.replace(/\n/g, '<br>')}</div>`;
+      res.innerHTML = `<strong>✨ Jawaban Cherly:</strong><br><div style="margin-top:8px;">${answer.replace(/\n/g, '<br>')}</div>`;
       speak(answer.replace(/\*/g, ''));
     } else {
-      throw new Error("Gagal mengambil respons dari Gemini");
+      throw new Error("Gagal");
     }
   } catch (err) {
-    console.error(err);
-    const fallbackMsg = "Selalu gunakan sensor ultrasonik tongkat untuk memindai rute di depan. Berjalanlah perlahan dan ikuti ubin pemandu (guiding block) di trotoar.";
+    const fallbackMsg = "Selalu gunakan sensor ultrasonik tongkat untuk memindai rute di depan. Berjalanlah perlahan dan ikuti ubin pemandu di trotoar.";
     res.innerHTML = `<strong>🤖 Jawaban Sistem (Offline):</strong><br>${fallbackMsg}`;
     speak(fallbackMsg);
   }
@@ -1143,26 +1143,22 @@ async function captureAndAnalyzeVision() {
   const base64Image = canvas.toDataURL('image/jpeg').split(',')[1];
 
   resultCard.style.display = 'block';
-  resultText.innerHTML = '<i class="fas fa-spinner fa-spin"></i> <em>Menganalisis gambar menggunakan Gemini AI...</em>';
+  resultText.innerHTML = '<i class="fas fa-spinner fa-spin"></i> <em>Cherly sedang menganalisis gambar...</em>';
 
   const prompt = "Analisislah gambar lingkungan ini khusus untuk penyandang tunanetra. Sebutkan objek di depan, bahaya potensial (seperti tangga, lubang, tiang), dan petunjuk arah melangkah dalam 2-3 kalimat ringkas bahasa Indonesia.";
-  const apiKey = ""; // Masukkan API Key Anda di sini
-  const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-3-flash-preview:generateContent?key=${apiKey}`;
 
   try {
-    const payload = {
-      contents: [{
-        parts: [
-          { text: prompt },
-          { inlineData: { mimeType: "image/jpeg", data: base64Image } }
-        ]
-      }]
-    };
-
-    const response = await fetch(apiUrl, {
+    const response = await fetch('/api/gemini', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(payload)
+      body: JSON.stringify({
+        contents: [{
+          parts: [
+            { text: prompt },
+            { inlineData: { mimeType: "image/jpeg", data: base64Image } }
+          ]
+        }]
+      })
     });
 
     const data = await response.json();
@@ -1172,10 +1168,9 @@ async function captureAndAnalyzeVision() {
       resultText.innerHTML = reply.replace(/\n/g, '<br>');
       speak(reply.replace(/\*/g, ''));
     } else {
-      throw new Error("Gagal memproses gambar dengan Gemini AI Vision");
+      throw new Error("Gagal");
     }
   } catch (err) {
-    console.error(err);
     const mockReply = "Area depan tampak aman tanpa halangan besar di bawah 1 meter. Tetap pegang erat tongkat pintar Anda.";
     resultText.innerHTML = mockReply;
     speak(mockReply);
@@ -1294,26 +1289,22 @@ function showToast(msg, type='info') {
   setTimeout(() => t.classList.remove('show'), 3200);
 }
 
-const BLYNK_AUTH_TOKEN = "YOUR_BLYNK_AUTH_TOKEN"; // Ganti dengan token Blynk kamu
 let esp32Lat = null;
 let esp32Lng = null;
 
 async function fetchESP32GPS() {
-  if (!BLYNK_AUTH_TOKEN || BLYNK_AUTH_TOKEN === "YOUR_BLYNK_AUTH_TOKEN") return;
-
   try {
-    const [latRes, lngRes] = await Promise.all([
-      fetch(`https://blynk.cloud/external/api/get?token=${BLYNK_AUTH_TOKEN}&v5`),
-      fetch(`https://blynk.cloud/external/api/get?token=${BLYNK_AUTH_TOKEN}&v6`)
-    ]);
+    const res = await fetch('/api/blynk');
+    if (!res.ok) return;
 
-    esp32Lat = parseFloat(await latRes.text());
-    esp32Lng = parseFloat(await lngRes.text());
+    const data = await res.json();
+    esp32Lat = data.lat;
+    esp32Lng = data.lng;
 
-    if (!isNaN(esp32Lat) && !isNaN(esp32Lng)) {
+    if (!isNaN(esp32Lat) && !isNaN(esp32Lng) && map) {
       if (window.esp32Marker) {
         window.esp32Marker.setLatLng([esp32Lat, esp32Lng]);
-      } else if (map) {
+      } else {
         window.esp32Marker = L.marker([esp32Lat, esp32Lng], {
           icon: L.divIcon({
             className: 'esp32-marker',
@@ -1329,7 +1320,7 @@ async function fetchESP32GPS() {
 }
 
 setInterval(fetchESP32GPS, 5000);
-
 </script>
 </body>
 </html>
+  
