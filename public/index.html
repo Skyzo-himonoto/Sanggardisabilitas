@@ -348,6 +348,367 @@ pre.code-block {
   .nav-actions { gap: 3px !important; }
   .icon-btn { width: 30px !important; height: 30px !important; font-size: 12px !important; }
 }
+
+#loadingScreen {
+  background: linear-gradient(135deg, #0b0f19 0%, #1e1b4b 100%) !important;
+}
+.loader-icon {
+  font-size: 70px;
+  color: var(--secondary);
+  margin-bottom: 20px;
+  animation: walkShake 1.2s ease-in-out infinite;
+}
+@keyframes walkShake {
+  0%, 100% { transform: rotate(-8deg) translateY(0); }
+  50% { transform: rotate(8deg) translateY(-6px); }
+}
+.loader-title {
+  font-weight: 900;
+  font-size: 22px;
+  letter-spacing: 2px;
+  margin-bottom: 20px;
+  background: linear-gradient(135deg, #06b6d4, #4f46e5);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.loader-checklist {
+  width: 280px;
+  text-align: left;
+  margin-bottom: 20px;
+}
+.loader-step {
+  font-size: 13px;
+  color: #94a3b8;
+  padding: 6px 0;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  transition: color 0.3s ease;
+}
+.loader-step.done { color: #10b981; }
+.loader-step.active { color: #fbbf24; }
+.loader-step i { width: 18px; text-align: center; }
+.loader-progress {
+  width: 280px;
+  height: 6px;
+  background: rgba(255,255,255,0.1);
+  border-radius: 10px;
+  overflow: hidden;
+  margin-bottom: 10px;
+}
+.loader-progress-bar {
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(90deg, #06b6d4, #4f46e5);
+  border-radius: 10px;
+  transition: width 0.4s ease;
+}
+.loader-percent {
+  font-size: 13px;
+  font-weight: 700;
+  color: #94a3b8;
+  margin-bottom: 16px;
+}
+.loader-hint {
+  font-size: 11px;
+  color: #64748b;
+  max-width: 260px;
+  text-align: center;
+  line-height: 1.5;
+}
+.loader-repeat-btn {
+  margin-top: 14px;
+  padding: 8px 16px;
+  background: rgba(6, 182, 212, 0.15);
+  border: 1px solid rgba(6, 182, 212, 0.4);
+  color: #06b6d4;
+  border-radius: 20px;
+  font-size: 11px;
+  font-weight: 700;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.loader-repeat-btn:hover { background: rgba(6, 182, 212, 0.25); }
+.toast-msg {
+  position: fixed !important;
+  top: 90px !important;
+  left: 50% !important;
+  right: auto !important;
+  bottom: auto !important;
+  transform: translateX(-50%) translateY(-120px) !important;
+  z-index: 9500 !important;
+  padding: 18px 24px !important;
+  border-radius: 16px !important;
+  font-size: 15px !important;
+  font-weight: 700 !important;
+  max-width: 90vw !important;
+  width: auto !important;
+  text-align: center !important;
+  box-shadow: 0 20px 50px rgba(0,0,0,0.35) !important;
+  display: flex !important;
+  align-items: center !important;
+  gap: 12px !important;
+  border: 2px solid transparent !important;
+}
+.toast-msg.show {
+  transform: translateX(-50%) translateY(0) !important;
+  opacity: 1 !important;
+}
+.toast-msg.info    { background: #1e40af !important; color: #fff !important; border-color: #3b82f6 !important; }
+.toast-msg.success { background: #065f46 !important; color: #fff !important; border-color: #10b981 !important; }
+.toast-msg.warning { background: #92400e !important; color: #fff !important; border-color: #f59e0b !important; }
+.toast-msg.danger  { background: #991b1b !important; color: #fff !important; border-color: #ef4444 !important; }
+.toast-msg i { font-size: 22px !important; flex-shrink: 0; }
+.toast-msg.danger { animation: shake 0.5s infinite; }
+
+.access-panel {
+  background: var(--card-bg);
+  border: 2px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  padding: 20px 24px;
+  margin-bottom: 24px;
+  box-shadow: var(--shadow-sm);
+}
+.access-panel-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 16px;
+  padding-bottom: 14px;
+  border-bottom: 1px solid var(--border-color);
+}
+.access-panel-header i {
+  font-size: 22px;
+  color: var(--primary);
+}
+.access-panel-header h4 {
+  font-size: 15px;
+  font-weight: 800;
+  margin: 0;
+}
+.access-panel-header small {
+  display: block;
+  font-size: 11px;
+  color: var(--text-muted);
+  font-weight: 600;
+  margin-top: 2px;
+}
+.access-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 0;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+.access-row-label {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 13px;
+  font-weight: 700;
+  flex: 1;
+  min-width: 180px;
+}
+.access-row-label i {
+  font-size: 16px;
+  color: var(--primary);
+  width: 22px;
+  text-align: center;
+}
+.access-row-desc {
+  display: block;
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--text-muted);
+  margin-top: 2px;
+}
+
+.toggle-switch {
+  position: relative;
+  display: inline-block;
+  width: 54px;
+  height: 30px;
+  flex-shrink: 0;
+}
+.toggle-switch input { opacity: 0; width: 0; height: 0; }
+.toggle-slider {
+  position: absolute;
+  cursor: pointer;
+  inset: 0;
+  background-color: #cbd5e1;
+  transition: 0.3s;
+  border-radius: 30px;
+  border: 2px solid transparent;
+}
+.toggle-slider:before {
+  position: absolute;
+  content: "";
+  height: 22px;
+  width: 22px;
+  left: 2px;
+  bottom: 2px;
+  background-color: white;
+  transition: 0.3s;
+  border-radius: 50%;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+.toggle-switch input:checked + .toggle-slider {
+  background: linear-gradient(135deg, var(--primary), var(--secondary));
+}
+.toggle-switch input:checked + .toggle-slider:before {
+  transform: translateX(24px);
+}
+body.dark-mode .toggle-slider { background-color: #475569; }
+
+.access-range {
+  width: 160px;
+  height: 6px;
+  border-radius: 10px;
+  background: var(--border-color);
+  outline: none;
+  -webkit-appearance: none;
+  appearance: none;
+  cursor: pointer;
+}
+.access-range::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--primary), var(--secondary));
+  cursor: pointer;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+}
+.access-range::-moz-range-thumb {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--primary), var(--secondary));
+  cursor: pointer;
+  border: none;
+}
+.range-value {
+  font-size: 13px;
+  font-weight: 800;
+  color: var(--primary);
+  min-width: 40px;
+  text-align: right;
+}
+
+.floating-read-btn {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--primary), var(--secondary));
+  color: #fff;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+  box-shadow: 0 10px 30px rgba(79,70,229,0.4);
+  z-index: 8500;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: 0.3s ease;
+  animation: pulseFloat 2s ease-in-out infinite;
+}
+.floating-read-btn:hover {
+  transform: scale(1.1);
+}
+.floating-read-btn:active {
+  transform: scale(0.95);
+}
+@keyframes pulseFloat {
+  0%, 100% { box-shadow: 0 10px 30px rgba(79,70,229,0.4); }
+  50% { box-shadow: 0 10px 40px rgba(79,70,229,0.7), 0 0 0 12px rgba(79,70,229,0.1); }
+}
+@media (max-width: 768px) {
+  .floating-read-btn { width: 54px; height: 54px; bottom: 20px; right: 20px; font-size: 20px; }
+}
+
+.skip-link {
+  position: absolute;
+  top: -100px;
+  left: 10px;
+  background: var(--primary);
+  color: #fff;
+  padding: 12px 20px;
+  border-radius: 8px;
+  font-weight: 700;
+  z-index: 10000;
+  text-decoration: none;
+  transition: top 0.3s ease;
+}
+.skip-link:focus { top: 80px; }
+
+*:focus-visible {
+  outline: 3px solid var(--primary);
+  outline-offset: 2px;
+  border-radius: 6px;
+}
+body.high-contrast *:focus-visible {
+  outline: 3px solid #ffff00;
+  outline-offset: 3px;
+}
+
+body.reduce-motion *,
+body.reduce-motion *::before,
+body.reduce-motion *::after {
+  animation-duration: 0.001s !important;
+  animation-iteration-count: 1 !important;
+  transition-duration: 0.001s !important;
+}
+body.reduce-motion .floating-read-btn { animation: none !important; }
+body.dyslexia-mode * {
+  font-family: 'Comic Sans MS', 'Verdana', sans-serif !important;
+  letter-spacing: 0.05em !important;
+  line-height: 1.8 !important;
+}
+
+.preset-buttons {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+.preset-btn {
+  padding: 8px 14px;
+  border-radius: 10px;
+  border: 2px solid var(--border-color);
+  background: var(--card-bg);
+  color: var(--text-main);
+  font-size: 13px;
+  font-weight: 800;
+  cursor: pointer;
+  transition: 0.2s ease;
+  min-width: 52px;
+}
+.preset-btn:hover {
+  border-color: var(--primary);
+  transform: translateY(-2px);
+}
+.preset-btn.active {
+  background: linear-gradient(135deg, var(--primary), var(--secondary));
+  color: #fff;
+  border-color: transparent;
+  box-shadow: 0 4px 12px rgba(79, 70, 229, 0.35);
+}
+body.high-contrast .preset-btn.active {
+  background: #ffff00 !important;
+  color: #000000 !important;
+}
+
+.btn-font-size {
+  padding: 10px 16px;
+  font-size: 16px;
+  min-width: 44px;
+}
 </style>
 </head>
 <body>
@@ -356,9 +717,40 @@ pre.code-block {
 <div class="bg-orb orb-2"></div>
 
 <div id="loadingScreen">
-  <div class="loader-ring"></div>
-  <div style="font-weight:800;font-size:18px;letter-spacing:1px;">SANGGAR PENYINTAS</div>
-  <div style="font-size:12px;color:var(--text-muted);margin-top:6px;" id="loaderMsg">Sedang koneksi Mikrokontroler</div>
+  <i class="fas fa-blind loader-icon"></i>
+  <div class="loader-title">SANGGAR PENYINTAS</div>
+  
+  <div class="loader-checklist">
+    <div class="loader-step active" id="step1">
+      <i class="fas fa-circle-notch fa-spin"></i>
+      <span>Menghubungkan modul sensor...</span>
+    </div>
+    <div class="loader-step" id="step2">
+      <i class="fas fa-circle"></i>
+      <span>Menyalakan GPS real-time...</span>
+    </div>
+    <div class="loader-step" id="step3">
+      <i class="fas fa-circle"></i>
+      <span>Menyiapkan Cherly AI...</span>
+    </div>
+    <div class="loader-step" id="step4">
+      <i class="fas fa-circle"></i>
+      <span>Mengaktifkan panduan suara...</span>
+    </div>
+  </div>
+  
+  <div class="loader-progress">
+    <div class="loader-progress-bar" id="loaderBar"></div>
+  </div>
+  <div class="loader-percent" id="loaderPercent">0%</div>
+  
+  <div class="loader-hint">
+    Tekan tombol di bawah jika suara panduan belum terdengar
+  </div>
+  
+  <button class="loader-repeat-btn" onclick="repeatWelcome()">
+    <i class="fas fa-volume-high"></i> Ulangi Suara Panduan
+  </button>
 </div>
 
 <div class="sos-overlay" id="sosOverlay">
@@ -455,7 +847,6 @@ pre.code-block {
       <div class="nav-link-left"><i class="fas fa-hand-holding-heart"></i><span>Navigasi Haptik Handle</span></div>
       <span class="dev-tag">Dev</span>
     </div>
-
     <div class="menu-category">Hardware & Blynk</div>
     <div class="nav-link" onclick="requestFirmwareAccess(this)">
       <div class="nav-link-left"><i class="fas fa-code"></i><span>Generator Kode ESP32</span></div>
@@ -476,7 +867,7 @@ pre.code-block {
 </aside>
 
 <div class="app-container">
-  <main class="main-content">
+  <main class="main-content" id="mainContent">
 
     <div class="page active" id="page-home">
       <div class="hero-banner">
@@ -493,22 +884,115 @@ pre.code-block {
           <button class="btn" style="background:rgba(255,255,255,0.2);color:#fff;border:1px solid rgba(255,255,255,0.4);" onclick="toggleDrawer()"><i class="fas fa-bars"></i> Buka Slide Menu</button>
         </div>
       </div>
-
-    <div class="card" style="margin-bottom:24px;padding:16px 24px;">
-        <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;">
-          <div style="display:flex;align-items:center;gap:10px;">
-            <i class="fas fa-universal-access" style="font-size:20px;color:var(--primary);"></i>
-            <span style="font-weight:800;font-size:14px;">Pengaturan Aksesibilitas Cepat:</span>
-          </div>
-          <div class="btn-group">
-            <button class="btn" onclick="toggleHighContrast()"><i class="fas fa-circle-half-stroke"></i> Mode Kontras Tinggi</button>
-            <button class="btn" onclick="changeFontSize(0.1)"><i class="fas fa-font"></i> Teks +</button>
-            <button class="btn" onclick="changeFontSize(-0.1)"><i class="fas fa-font" style="font-size:10px;"></i> Teks -</button>
-            <button class="btn" onclick="resetFontSize()"><i class="fas fa-rotate-left"></i> Reset</button>
-          </div>
+      
+<div class="card" style="margin-bottom:24px;padding:20px 24px;">
+  <div style="display:flex;align-items:center;gap:10px;margin-bottom:16px;">
+    <i class="fas fa-universal-access" style="font-size:22px;color:var(--primary);"></i>
+    <span style="font-weight:800;font-size:15px;">Pengaturan Aksesibilitas Cepat</span>
+  </div>
+  
+  <div class="access-panel" style="margin-bottom:0;">
+    <div class="access-panel-header">
+      <i class="fas fa-brain"></i>
+      <div>
+        <h4>Mode Aksesibilitas Lanjutan</h4>
+        <small>Pengaturan khusus untuk disabilitas netra & lansia</small>
+      </div>
+    </div>
+    
+    <div class="access-row">
+      <div class="access-row-label">
+        <i class="fas fa-volume-high"></i>
+        <div>
+          Panduan Suara Otomatis
+          <span class="access-row-desc">Setiap halaman & tombol otomatis dibacakan</span>
         </div>
       </div>
+      <label class="toggle-switch">
+        <input type="checkbox" id="toggleAutoTTS" checked onchange="toggleAutoTTS(this.checked)">
+        <span class="toggle-slider"></span>
+      </label>
+    </div>
+    
+    <div class="access-row">
+      <div class="access-row-label">
+        <i class="fas fa-book-open"></i>
+        <div>
+          Baca Halaman Ini
+          <span class="access-row-desc">Bacakan isi halaman yang sedang dibuka</span>
+        </div>
+      </div>
+      <button class="btn btn-primary" onclick="readCurrentPage()" style="padding:8px 16px;font-size:12px;">
+        <i class="fas fa-play"></i> Bacakan
+      </button>
+    </div>
+    
+    <div class="access-row">
+      <div class="access-row-label">
+        <i class="fas fa-gauge-high"></i>
+        <div>
+          Kecepatan Suara
+          <span class="access-row-desc">Ketuk untuk memilih kecepatan</span>
+        </div>
+      </div>
+      <div class="preset-buttons" id="ttsPresetButtons">
+        <button class="preset-btn" onclick="changeTTSRate(0.5)" data-rate="0.5">0.5x</button>
+        <button class="preset-btn active" onclick="changeTTSRate(1)" data-rate="1">1x</button>
+        <button class="preset-btn" onclick="changeTTSRate(1.5)" data-rate="1.5">1.5x</button>
+        <button class="preset-btn" onclick="changeTTSRate(2)" data-rate="2">2x</button>
+      </div>
+    </div>
+    
+    <div class="access-row">
+      <div class="access-row-label">
+        <i class="fas fa-person-running"></i>
+        <div>
+          Kurangi Animasi
+          <span class="access-row-desc">Untuk pengguna dengan sensitivitas gerakan</span>
+        </div>
+      </div>
+      <label class="toggle-switch">
+        <input type="checkbox" id="toggleReduceMotion" onchange="toggleReduceMotion(this.checked)">
+        <span class="toggle-slider"></span>
+      </label>
+    </div>
+    
+    <div class="access-row">
+      <div class="access-row-label">
+        <i class="fas fa-text-height"></i>
+        <div>
+          Mode Ramah Disleksia
+          <span class="access-row-desc">Font lebih mudah dibaca</span>
+        </div>
+      </div>
+      <label class="toggle-switch">
+        <input type="checkbox" id="toggleDyslexia" onchange="toggleDyslexia(this.checked)">
+        <span class="toggle-slider"></span>
+      </label>
+    </div>
+  </div>
+</div>
 
+          <div class="btn-group" style="align-items:center;gap:8px;margin-bottom:20px;">
+    <button class="btn" onclick="toggleHighContrast()">
+      <i class="fas fa-circle-half-stroke"></i> Kontras Tinggi
+    </button>
+    
+    <div style="display:flex;align-items:center;gap:6px;padding:4px 10px;background:var(--light-bg);border-radius:12px;border:1px solid var(--border-color);">
+      <button class="btn" onclick="changeFontSize(-0.1)" onmousedown="startHoldFontSize(-1)" onmouseup="stopHoldFontSize()" onmouseleave="stopHoldFontSize()" ontouchstart="startHoldFontSize(-1)" ontouchend="stopHoldFontSize()" title="Perkecil teks" style="padding:8px 14px;font-weight:900;">
+        <i class="fas fa-minus"></i>
+      </button>
+      <span id="fontSizeLabel" style="font-weight:800;font-size:14px;min-width:55px;text-align:center;color:var(--primary);">100%</span>
+      <button class="btn" onclick="changeFontSize(0.1)" onmousedown="startHoldFontSize(1)" onmouseup="stopHoldFontSize()" onmouseleave="stopHoldFontSize()" ontouchstart="startHoldFontSize(1)" ontouchend="stopHoldFontSize()" title="Perbesar teks" style="padding:8px 14px;font-weight:900;">
+        <i class="fas fa-plus"></i>
+      </button>
+    </div>
+    
+    <button class="btn" onclick="resetFontSize()">
+      <i class="fas fa-rotate-left"></i> Reset
+    </button>
+  </div>
+  
       <h3 style="font-size:18px;font-weight:800;margin-bottom:16px;">Ringkasan statistik mikrokontroler</h3>
       <div class="grid-cards">
         <div class="card">
@@ -643,9 +1127,9 @@ pre.code-block {
 
         <div id="aiResult" style="margin-top:20px;padding:20px;border-radius:14px;background:var(--light-bg);border:1px solid var(--border-color);display:none;font-size:14px;line-height:1.7;"></div>
       </div>
-    </div>
+        </div>
 
-    <div class="page" id="page-aivision">
+        <div class="page" id="page-aivision">
       <div style="display:flex;align-items:center;gap:12px;margin-bottom:6px;">
         <h2 style="font-size:24px;font-weight:800;">📷 AI Vision Object & Danger Scanner</h2>
         <span class="ai-tag">Cherly</span>
@@ -821,7 +1305,7 @@ void loop() {
       <div class="card">
         <h3 style="font-size:18px;font-weight:800;margin-bottom:12px;color:var(--primary);">🎯 Misi & Kegunaan Utama</h3>
         <p style="font-size:14px;line-height:1.7;margin-bottom:16px;">
-          Aplikasi <strong>Sanggar Penyintas</strong> dikembangkan sebagai platform asisten digital yang terhubung dengan Perangkat Hardware Tongkat Pintar. Tujuan utamanya adalah memberikan kemandirian penuh, perlindungan keselamatan, serta dukungan kecerdasan AI bagi individu disabilitas netra.
+          Aplikasi <strong>Sanggar Penyintas</strong> dikembangkan sebagai platform asisten digital yang terhubung dengan Perangkat Hardware Tongkat Pintar. Tujuan utamanya adalah memberikan kemandirian penuh, perlindungan keselamatan, serta dukungan kecerdasan AI bagi individu disabilitas.
         </p>
       </div>
     </div>
@@ -830,8 +1314,17 @@ void loop() {
 
 <div class="toast-msg" id="toast"><i class="fas fa-circle-info"></i><span id="toastMsg">Informasi</span></div>
 
+<button class="floating-read-btn" onclick="readCurrentPage()" title="Bacakan halaman ini" aria-label="Bacakan halaman ini">
+  <i class="fas fa-volume-high"></i>
+</button>
+
+<a href="#mainContent" class="skip-link">Lewati ke Konten Utama</a>
+
 <script>
-let ttsActive = false;
+let ttsActive = true;
+let ttsRate = 1;
+let autoTTS = true;
+let currentPage = 'home';
 let currentLat = -6.2088;
 let currentLng = 106.8456;
 let map = null, marker = null;
@@ -843,20 +1336,128 @@ let isFirmwareUnlocked = false;
 
 window.addEventListener('load', () => {
   const savedScale = localStorage.getItem('fontScale');
-  if (savedScale) {
-    fontScale = parseFloat(savedScale);
-    document.documentElement.style.setProperty('--font-scale', fontScale);
-    document.body.classList.add('text-scale-active');
+if (savedScale) {
+  fontScale = parseFloat(savedScale);
+  document.documentElement.style.setProperty('--font-scale', fontScale);
+  document.body.classList.add('text-scale-active');
+  
+  setTimeout(() => {
+    const label = document.getElementById('fontSizeLabel');
+    if (label) label.innerText = Math.round(fontScale * 100) + '%';
+  }, 100);
+}
+
+  const savedRate = localStorage.getItem('ttsRate');
+  if (savedRate) {
+    ttsRate = parseFloat(savedRate);
+    const slider = document.getElementById('ttsRate');
+    if (slider) slider.value = ttsRate;
+    const valEl = document.getElementById('ttsRateValue');
+    if (valEl) valEl.innerText = ttsRate + 'x';
+  }
+  
+  const savedAutoTTS = localStorage.getItem('autoTTS');
+  if (savedAutoTTS !== null) {
+    autoTTS = savedAutoTTS === 'true';
+    const toggle = document.getElementById('toggleAutoTTS');
+    if (toggle) toggle.checked = autoTTS;
+  }
+  
+  const savedReduceMotion = localStorage.getItem('reduceMotion');
+  if (savedReduceMotion === 'true') {
+    document.body.classList.add('reduce-motion');
+    const toggle = document.getElementById('toggleReduceMotion');
+    if (toggle) toggle.checked = true;
+  }
+  
+  const savedDyslexia = localStorage.getItem('dyslexia');
+  if (savedDyslexia === 'true') {
+    document.body.classList.add('dyslexia-mode');
+    const toggle = document.getElementById('toggleDyslexia');
+    if (toggle) toggle.checked = true;
   }
 
-  setTimeout(() => {
-    document.getElementById('loadingScreen').classList.add('hide');
-    initMap();
-    startSensorLoop();
-    startLiveClock();
-    document.getElementById('gpsModal').classList.add('active');
-  }, 800);
+  startLoadingSequence();
 });
+
+function startLoadingSequence() {
+  const steps = [
+    { el: 'step1', text: 'Menghubungkan modul sensor...' },
+    { el: 'step2', text: 'Menyalakan GPS real-time...' },
+    { el: 'step3', text: 'Menyiapkan Cherly AI...' },
+    { el: 'step4', text: 'Mengaktifkan panduan suara...' }
+  ];
+  
+  const bar = document.getElementById('loaderBar');
+  const percent = document.getElementById('loaderPercent');
+  
+  window.forceTTS = true;
+  speak("Selamat datang di Sanggar Penyintas. Aplikasi pemandu disabilitas netra. Sedang memuat aplikasi.", 'normal');
+  window.forceTTS = false;
+  
+  let currentStep = 0;
+  const totalTime = 4000; // 4 detik
+  const stepTime = totalTime / steps.length;
+  
+  const interval = setInterval(() => {
+    if (currentStep > 0) {
+      const prevEl = document.getElementById(steps[currentStep - 1].el);
+      if (prevEl) {
+        prevEl.classList.remove('active');
+        prevEl.classList.add('done');
+        prevEl.querySelector('i').className = 'fas fa-circle-check';
+      }
+    }
+    
+    if (currentStep < steps.length) {
+      const currEl = document.getElementById(steps[currentStep].el);
+      if (currEl) {
+        currEl.classList.add('active');
+        currEl.querySelector('i').className = 'fas fa-circle-notch fa-spin';
+      }
+      
+      const progress = ((currentStep + 1) / steps.length) * 100;
+      if (bar) bar.style.width = progress + '%';
+      if (percent) percent.innerText = Math.round(progress) + '%';
+      
+      currentStep++;
+    } else {
+      clearInterval(interval);
+      
+      const lastEl = document.getElementById(steps[steps.length - 1].el);
+      if (lastEl) {
+        lastEl.classList.remove('active');
+        lastEl.classList.add('done');
+        lastEl.querySelector('i').className = 'fas fa-circle-check';
+      }
+      
+      if (bar) bar.style.width = '100%';
+      if (percent) percent.innerText = '100%';
+      
+      setTimeout(() => {
+        document.getElementById('loadingScreen').classList.add('hide');
+        initMap();
+        startSensorLoop();
+        startLiveClock();
+        
+        window.forceTTS = true;
+        speak("Aplikasi siap digunakan. Anda berada di halaman Beranda.", 'normal');
+        window.forceTTS = false;
+        
+        setTimeout(() => {
+          document.getElementById('gpsModal').classList.add('active');
+        }, 1500);
+      }, 500);
+    }
+  }, stepTime);
+}
+
+function repeatWelcome() {
+  window.forceTTS = true;
+  speak("Selamat datang di Sanggar Penyintas. Aplikasi sedang memuat. Mohon tunggu sebentar.", 'normal');
+  window.forceTTS = false;
+  showToast("🔊 Suara panduan diulang", "info");
+}
 
 function startLiveClock() {
   setInterval(() => {
@@ -903,21 +1504,25 @@ function toggleHighContrast() {
 }
 
 function changeFontSize(delta) {
-  let currentScale = parseFloat(
-    getComputedStyle(document.documentElement).getPropertyValue('--font-scale')
-  ) || 1;
-
-  let newScale = currentScale + delta;
-  if (newScale < 0.8) newScale = 0.8;
-  if (newScale > 1.6) newScale = 1.6;
-
-  document.documentElement.style.setProperty('--font-scale', newScale);
+  fontScale = fontScale + delta;
+  
+  // Batas minimal & maksimal
+  if (fontScale < 0.5) fontScale = 0.5;
+  if (fontScale > 2.5) fontScale = 2.5;
+  
+  document.documentElement.style.setProperty('--font-scale', fontScale);
   document.body.classList.add('text-scale-active');
-  localStorage.setItem('fontScale', newScale);
-
-  const persen = Math.round(newScale * 100);
+  localStorage.setItem('fontScale', fontScale);
+  
+  const label = document.getElementById('fontSizeLabel');
+  if (label) label.innerText = Math.round(fontScale * 100) + '%';
+  
+  // Feedback suara
+  const persen = Math.round(fontScale * 100);
   showToast(`Ukuran teks: ${persen}%`, 'info');
-  speak(`Ukuran teks ${persen} persen.`);
+  window.forceTTS = true;
+  speak(`Ukuran teks ${persen} persen.`, 'normal');
+  window.forceTTS = false;
 }
 
 function resetFontSize() {
@@ -942,14 +1547,39 @@ function toggleSpeech() {
   }
 }
 
-function speak(text) {
+function speak(text, type = 'normal') {
+  // type: 'normal' | 'warning' | 'sos' | 'success' | 'error'
+  
   if (!ttsActive && !window.forceTTS) return;
-  if ('speechSynthesis' in window) {
-    window.speechSynthesis.cancel();
-    const utt = new SpeechSynthesisUtterance(text);
-    utt.lang = 'id-ID';
-    window.speechSynthesis.speak(utt);
+  if (!('speechSynthesis' in window)) return;
+
+  window.speechSynthesis.cancel();
+  
+  const utt = new SpeechSynthesisUtterance(text);
+  utt.lang = 'id-ID';
+  
+  utt.rate = ttsRate;
+  
+  if (type === 'warning') {
+    utt.rate = ttsRate * 1.2;
+    utt.pitch = 1.4;
+    utt.volume = 1;
+  } else if (type === 'sos') {
+    utt.rate = ttsRate * 1.3;
+    utt.pitch = 1.8;
+    utt.volume = 1;
+  } else if (type === 'success') {
+    utt.pitch = 1.2;
+    utt.volume = 0.9;
+  } else if (type === 'error') {
+    utt.pitch = 0.8;
+    utt.volume = 1;
+  } else {
+    utt.pitch = 1;
+    utt.volume = 1;
   }
+  
+  window.speechSynthesis.speak(utt);
 }
 
 function switchPage(pageId, el) {
@@ -959,6 +1589,8 @@ function switchPage(pageId, el) {
   const target = document.getElementById('page-' + pageId);
   if (target) target.classList.add('active');
   if (el) el.classList.add('active');
+  
+  currentPage = pageId;
 
   const drawer = document.getElementById('sideDrawer');
   if (drawer.classList.contains('open')) toggleDrawer();
@@ -968,13 +1600,42 @@ function switchPage(pageId, el) {
   }
 
   const titles = {
-    'home': 'Halaman Beranda', 'cane': 'Halaman Monitoring Tongkat',
-    'emergency': 'Halaman Darurat SOS', 'aivision': 'Halaman AI Agent',
-    'haptic': 'Halaman Navigasi Haptik', 'aiassistant': 'Halaman Asisten AI Suara',
-    'esp32code': 'Halaman Generator Kode ESP32', 'community': 'Halaman Komunitas',
-    'forum': 'Halaman Ruang Aman Anonim', 'about': 'Halaman Tentang Aplikasi'
+    'home': 'Halaman Beranda. Di sini Anda bisa melihat ringkasan sensor dan mengakses fitur utama.',
+    'cane': 'Halaman Monitoring Tongkat. Memantau sensor ultrasonik, gyro, baterai, dan GPS tongkat pintar.',
+    'emergency': 'Halaman Pusat Darurat SOS. Tekan tombol besar di tengah untuk mengirim sinyal darurat.',
+    'aivision': 'Halaman AI Vision Scanner. Aktifkan kamera untuk memindai objek di sekitar Anda.',
+    'haptic': 'Halaman Navigasi Haptik. Simulasi getaran untuk isyarat belok kiri dan kanan.',
+    'aiassistant': 'Halaman Asisten AI Cherly. Tanyakan apa saja tentang navigasi dan keselamatan.',
+    'esp32code': 'Halaman Generator Kode ESP32. Kode firmware untuk tongkat pintar.',
+    'community': 'Halaman Komunitas dan Relawan. Terhubung dengan pendamping terdekat.',
+    'forum': 'Halaman Ruang Aman Anonim. Forum berbagi pengalaman sesama penyintas.',
+    'about': 'Halaman Tentang Aplikasi. Informasi tentang ekosistem Sanggar Penyintas.'
   };
-  if (titles[pageId]) speak(titles[pageId]);
+  
+  if (autoTTS && titles[pageId]) {
+    setTimeout(() => speak(titles[pageId], 'normal'), 300);
+  }
+}
+
+function readCurrentPage() {
+  const pageDescriptions = {
+    'home': 'Halaman Beranda. Di sini ada ringkasan sensor, jam digital, status GPS, dan akses ke semua fitur.',
+    'cane': 'Halaman Monitoring Tongkat. Menampilkan jarak halangan, kemiringan gyro, tegangan baterai, dan peta GPS.',
+    'emergency': 'Halaman Darurat SOS. Tekan tombol merah besar di tengah untuk mengirim sinyal darurat.',
+    'aivision': 'Halaman AI Vision. Aktifkan kamera lalu tekan pindai objek untuk menganalisis lingkungan.',
+    'haptic': 'Halaman Navigasi Haptik. Ada dua tombol untuk simulasi getaran kiri dan kanan.',
+    'aiassistant': 'Halaman Asisten Cherly. Ketik pertanyaan atau tekan tombol bicara untuk bertanya.',
+    'esp32code': 'Halaman Kode Firmware. Salin kode untuk dipasang di tongkat pintar Anda.',
+    'community': 'Halaman Komunitas. Ada relawan terdekat yang siap membantu.',
+    'forum': 'Halaman Forum Anonim. Tulis pesan untuk berbagi dengan penyintas lain.',
+    'about': 'Halaman Tentang. Berisi informasi tentang misi aplikasi Sanggar Penyintas.'
+  };
+  
+  window.forceTTS = true;
+  speak(pageDescriptions[currentPage] || 'Ini adalah halaman aplikasi Sanggar Penyintas.', 'normal');
+  window.forceTTS = false;
+  
+  showToast("🔊 Membacakan halaman ini...", "info");
 }
 
 function requestFirmwareAccess(el) {
@@ -1006,13 +1667,13 @@ async function verifyFirmwarePassword() {
       throw new Error();
     }
   } catch (err) {
-    showToast("Sandi Salah Akses Ditolak.", "danger");
+    showToast("Sandi Salah! Akses Ditolak.", "danger");
     speak("Sandi salah. Silakan coba lagi.");
     document.getElementById('firmwarePassword').value = '';
   }
 }
 
-  function closePasswordModal() {
+function closePasswordModal() {
   document.getElementById('passwordModal').classList.remove('active');
 }
 
@@ -1241,7 +1902,7 @@ function stopSOS() {
 function copyESPCode() {
   const code = document.getElementById('codeBlock').innerText;
   navigator.clipboard.writeText(code).then(() => {
-    showToast("Kode ESP32 Berhasil Disalin!", "success");
+    showToast("Kode ESP32 Berhasil Disalin", "success");
   });
 }
 
@@ -1282,11 +1943,31 @@ function postForum() {
   showToast("Pesan dikirim anonim", "success");
 }
 
-function showToast(msg, type='info') {
+function showToast(msg, type = 'info') {
   const t = document.getElementById('toast');
+  const icon = t.querySelector('i');
+  
+  const icons = {
+    'info': 'fas fa-circle-info',
+    'success': 'fas fa-circle-check',
+    'warning': 'fas fa-triangle-exclamation',
+    'danger': 'fas fa-circle-exclamation'
+  };
+  if (icon) icon.className = icons[type] || 'fas fa-circle-info';
+  
   document.getElementById('toastMsg').innerText = msg;
   t.className = `toast-msg show ${type}`;
-  setTimeout(() => t.classList.remove('show'), 3200);
+ 
+  if (autoTTS || type === 'danger' || type === 'warning') {
+    window.forceTTS = true;
+    speak(msg, type === 'danger' ? 'sos' : (type === 'warning' ? 'warning' : 'normal'));
+    window.forceTTS = false;
+  }
+  
+  const duration = (type === 'danger' || type === 'warning') ? 6000 : 4500;
+  
+  clearTimeout(window._toastTimer);
+  window._toastTimer = setTimeout(() => t.classList.remove('show'), duration);
 }
 
 let esp32Lat = null;
@@ -1320,7 +2001,164 @@ async function fetchESP32GPS() {
 }
 
 setInterval(fetchESP32GPS, 5000);
+
+function toggleAutoTTS(isOn) {
+  autoTTS = isOn;
+  localStorage.setItem('autoTTS', isOn);
+  
+  if (isOn) {
+    ttsActive = true;
+    const btn = document.getElementById('ttsBtn');
+    if (btn) btn.style.color = 'var(--success)';
+    window.forceTTS = true;
+    speak("Panduan suara otomatis diaktifkan. Setiap halaman akan dibacakan.", 'success');
+    window.forceTTS = false;
+    showToast("✅ Panduan suara otomatis AKTIF", "success");
+  } else {
+    window.forceTTS = true;
+    speak("Panduan suara otomatis dimatikan.", 'normal');
+    window.forceTTS = false;
+    showToast("Panduan suara otomatis NONAKTIF", "info");
+  }
+}
+
+function changeTTSRate(value) {
+  ttsRate = parseFloat(value);
+  localStorage.setItem('ttsRate', ttsRate);
+  
+  const valEl = document.getElementById('ttsRateValue');
+  if (valEl) valEl.innerText = ttsRate.toFixed(1) + 'x';
+  
+  window.forceTTS = true;
+  speak(`Kecepatan suara diatur ke ${ttsRate.toFixed(1)} kali.`, 'normal');
+  window.forceTTS = false;
+  showToast(`⚡ Kecepatan suara: ${ttsRate.toFixed(1)}x`, "info");
+}
+
+function toggleReduceMotion(isOn) {
+  if (isOn) {
+    document.body.classList.add('reduce-motion');
+    localStorage.setItem('reduceMotion', 'true');
+    showToast("🎬 Animasi dikurangi", "info");
+    window.forceTTS = true;
+    speak("Mode kurangi animasi diaktifkan.", 'normal');
+    window.forceTTS = false;
+  } else {
+    document.body.classList.remove('reduce-motion');
+    localStorage.setItem('reduceMotion', 'false');
+    showToast("🎬 Animasi normal kembali", "info");
+    window.forceTTS = true;
+    speak("Animasi kembali normal.", 'normal');
+    window.forceTTS = false;
+  }
+}
+
+function toggleDyslexia(isOn) {
+  if (isOn) {
+    document.body.classList.add('dyslexia-mode');
+    localStorage.setItem('dyslexia', 'true');
+    showToast("📖 Mode ramah disleksia aktif", "success");
+    window.forceTTS = true;
+    speak("Mode ramah disleksia diaktifkan. Font berubah agar lebih mudah dibaca.", 'normal');
+    window.forceTTS = false;
+  } else {
+    document.body.classList.remove('dyslexia-mode');
+    localStorage.setItem('dyslexia', 'false');
+    showToast("📖 Font kembali normal", "info");
+    window.forceTTS = true;
+    speak("Font kembali normal.", 'normal');
+    window.forceTTS = false;
+  }
+  }
+
+  function detectContrastPreference() {
+  if (window.matchMedia && window.matchMedia('(prefers-contrast: more)').matches) {
+    document.body.classList.add('high-contrast');
+    showToast("🎨 Mode kontras tinggi otomatis diaktifkan", "info");
+  }
+  if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    document.body.classList.add('reduce-motion');
+    const toggle = document.getElementById('toggleReduceMotion');
+    if (toggle) toggle.checked = true;
+  }
+}
+
+function announceForScreenReader(text) {
+
+  let announcer = document.getElementById('sr-announcer');
+  if (!announcer) {
+    announcer = document.createElement('div');
+    announcer.id = 'sr-announcer';
+    announcer.setAttribute('aria-live', 'polite');
+    announcer.setAttribute('aria-atomic', 'true');
+    announcer.style.cssText = 'position:absolute;left:-10000px;width:1px;height:1px;overflow:hidden;';
+    document.body.appendChild(announcer);
+  }
+  announcer.textContent = text;
+}
+
+document.addEventListener('keydown', (e) => {
+  // Tekan "S" untuk SOS (hati-hati, hanya saat tekan Shift+S)
+  if (e.shiftKey && e.key === 'S') {
+    e.preventDefault();
+    triggerSOS();
+  }
+ 
+  if (e.key === 'r' && !e.ctrlKey && !e.metaKey && 
+      document.activeElement.tagName !== 'INPUT' && 
+      document.activeElement.tagName !== 'TEXTAREA') {
+    readCurrentPage();
+  }
+
+  if (e.key === 'h' && !e.ctrlKey && !e.metaKey && 
+      document.activeElement.tagName !== 'INPUT' && 
+      document.activeElement.tagName !== 'TEXTAREA') {
+    switchPage('home');
+  }
+
+  if (e.key === 'Escape') {
+    document.querySelectorAll('.modal.active').forEach(m => m.classList.remove('active'));
+    const drawer = document.getElementById('sideDrawer');
+    if (drawer && drawer.classList.contains('open')) toggleDrawer();
+  }
+});
+
+function applyAriaLabels() {
+  const ariaMap = {
+    'voiceCmdBtn': 'Aktifkan perintah suara',
+    'ttsBtn': 'Nyalakan atau matikan panduan suara',
+    'openDrawerBtn': 'Buka menu navigasi',
+    'themeIcon': 'Ubah tema gelap atau terang'
+  };
+  
+  Object.keys(ariaMap).forEach(id => {
+    const el = document.getElementById(id);
+    if (el && !el.getAttribute('aria-label')) {
+      el.setAttribute('aria-label', ariaMap[id]);
+    }
+  });
+  
+  document.querySelectorAll('.nav-link').forEach(link => {
+    if (!link.getAttribute('role')) {
+      link.setAttribute('role', 'button');
+      link.setAttribute('tabindex', '0');
+    }
+  });
+}
+
+window.addEventListener('DOMContentLoaded', () => {
+  applyAriaLabels();
+  detectContrastPreference();
+  announceForScreenReader('Aplikasi Sanggar Penyintas dimuat');
+});
+
+window.addEventListener('load', () => {
+  setTimeout(() => {
+    if (autoTTS) {
+      announceForScreenReader('Aplikasi siap digunakan');
+    }
+  }, 5000);
+});
 </script>
 </body>
 </html>
-  
